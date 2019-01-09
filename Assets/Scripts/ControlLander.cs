@@ -15,8 +15,11 @@ public class ControlLander : MonoBehaviour {
 
     public int maxLandSpeed;
 
+    public int fuelReserve;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         rb = GetComponent<Rigidbody2D>();
 	}
 	
@@ -50,6 +53,12 @@ public class ControlLander : MonoBehaviour {
             //Destroy(gameObject);
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
+        else if(col.gameObject.tag == "Finish")
+        {
+            // Calculate Score
+
+            // Load Next Level
+        }
     }
 
     void RotateLander()
@@ -66,9 +75,18 @@ public class ControlLander : MonoBehaviour {
     void ThrustLander()
     {
         // Apply Thrust Physics
-        float x = -1 * thrust * thrustPower * Mathf.Sin(transform.rotation.eulerAngles.z / 180.0f * Mathf.PI);
-        float y = thrust * thrustPower * Mathf.Cos(transform.rotation.eulerAngles.z / 180.0f * Mathf.PI);
-        Vector2 movement = new Vector2(x, y);
-        rb.AddForce(movement);
+        if (fuelReserve > 0)
+        {
+            // Figure angle thrust
+            float x = -1 * thrust * thrustPower * Mathf.Sin(transform.rotation.eulerAngles.z / 180.0f * Mathf.PI);
+            float y = thrust * thrustPower * Mathf.Cos(transform.rotation.eulerAngles.z / 180.0f * Mathf.PI);
+            
+            // Create and add force
+            Vector2 movement = new Vector2(x, y);
+            rb.AddForce(movement);
+            
+            // Subtract 1 whole fuel
+            if(thrust == 1) fuelReserve -= 1;
+        }
     }
 }

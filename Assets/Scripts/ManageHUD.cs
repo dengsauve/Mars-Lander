@@ -9,24 +9,29 @@ public class ManageHUD : MonoBehaviour {
     public Text horizontalSpeedText;
     public Text verticalSpeedText;
     public Text rotationText;
+    public Text fuelReserveText;
     public string horizontalSpeedLabel;
     public string verticalSpeedLabel;
     public string rotationLabel;
+    public string fuelReserveLabel;
 
     // Lander
     public GameObject lander;
 
     // Private Vars
     private Rigidbody2D rb;
+    private ControlLander cl;
     private float verticalSpeed;
     private float horizontalSpeed;
     private float rotation;
+    private int fuelReserve;
 
 	// Use this for initialization
 	void Start ()
     {
         // Assign RigidBody2D
         rb = lander.GetComponent<Rigidbody2D>();
+        cl = lander.GetComponent<ControlLander>();
 	}
 	
 	// Update is called once per frame
@@ -39,9 +44,10 @@ public class ManageHUD : MonoBehaviour {
     void GetValues()
     {
         // Get Speeds and Rotation
-        verticalSpeed = (float)System.Math.Round(rb.velocity.x, 2);
-        horizontalSpeed = (float)System.Math.Round(rb.velocity.y, 2);
+        verticalSpeed = (float)System.Math.Round(rb.velocity.y, 2);
+        horizontalSpeed = (float)System.Math.Round(rb.velocity.x, 2);
         rotation = (float)System.Math.Round(rb.rotation, 2);
+        fuelReserve = cl.fuelReserve;
     }
 
     void UpdateHUD()
@@ -50,5 +56,6 @@ public class ManageHUD : MonoBehaviour {
         horizontalSpeedText.text = horizontalSpeedLabel + horizontalSpeed.ToString() + " m/s";
         verticalSpeedText.text = verticalSpeedLabel + verticalSpeed.ToString() + " m/s";
         rotationText.text = rotationLabel + rotation.ToString() + " deg";
+        fuelReserveText.text = fuelReserveLabel + fuelReserve.ToString() + " L";
     }
 }
