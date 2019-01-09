@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlLander : MonoBehaviour {
 
     private Rigidbody2D rb;
+    private Scene scene;
+    private int currentSceneIndex;
 
     public float thrustPower;
     private int thrust = 0;
@@ -21,6 +24,9 @@ public class ControlLander : MonoBehaviour {
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
+        scene = SceneManager.GetActiveScene();
+        Debug.Log(scene.buildIndex.ToString() + " has loaded");
+        currentSceneIndex = scene.buildIndex;
 	}
 	
 	// Update is called once per frame
@@ -51,13 +57,21 @@ public class ControlLander : MonoBehaviour {
         if (Mathf.Abs(lastSpeed) > maxLandSpeed || Mathf.Abs(rb.rotation) > 5)
         {
             //Destroy(gameObject);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0);
+        }
+        else if(col.gameObject.tag == "Obstacle")
+        {
+            SceneManager.LoadScene(scene.buildIndex);
         }
         else if(col.gameObject.tag == "Finish")
         {
             // Calculate Score
 
             // Load Next Level
+            if (SceneManager.GetSceneByBuildIndex(currentSceneIndex + 1) != null)
+            {
+                SceneManager.LoadScene(currentSceneIndex + 1);
+            }
         }
     }
 
