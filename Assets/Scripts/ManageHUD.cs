@@ -26,6 +26,9 @@ public class ManageHUD : MonoBehaviour {
     private float rotation;
     private int fuelReserve;
 
+    // Pause Menu
+    public GameObject pauseMenu;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -39,6 +42,7 @@ public class ManageHUD : MonoBehaviour {
     {
         GetValues();
         UpdateHUD();
+        if (Input.GetKeyDown("escape") || Input.GetKeyDown("p")) TogglePauseMenu();
 	}
 
     void GetValues()
@@ -57,5 +61,20 @@ public class ManageHUD : MonoBehaviour {
         verticalSpeedText.text = verticalSpeedLabel + verticalSpeed.ToString() + " m/s";
         rotationText.text = rotationLabel + rotation.ToString() + " deg";
         fuelReserveText.text = fuelReserveLabel + fuelReserve.ToString() + " L";
+    }
+
+    void TogglePauseMenu()
+    {
+        Debug.Log("Pause Menu Called");
+        if(pauseMenu.activeSelf)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
     }
 }
