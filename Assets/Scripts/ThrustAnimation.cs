@@ -15,19 +15,18 @@ public class ThrustAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey("w") || Input.GetKey("up"))
+        if (thrustLeft != null && thrustRight != null)
         {
-            thrustRight.transform.localScale = new Vector3(0.1f, 0.1f, 1);
-            //thrustRight.transform.position = new Vector3(0.111f, -0.4f, 0) + transform.position;
-            thrustLeft.transform.localScale = new Vector3(0.1f, 0.1f, 1);
-            //thrustLeft.transform.position = new Vector3(-0.111f, -0.4f, 0) + transform.position;
-        }
-        else
-        {
-            thrustRight.transform.localScale = new Vector3(0.05f, 0.1f, 1);
-            //thrustRight.transform.position = new Vector3(0.111f, -0.3f, 0);
-            thrustLeft.transform.localScale = new Vector3(0.05f, 0.1f, 1);
-            //thrustLeft.transform.position = new Vector3(-0.111f, -0.3f, 0);
+            if (Input.GetKey("w") || Input.GetKey("up"))
+            {
+                thrustRight.transform.localScale = new Vector3(0.1f, 0.1f, 1);
+                thrustLeft.transform.localScale = new Vector3(0.1f, 0.1f, 1);
+            }
+            else
+            {
+                thrustRight.transform.localScale = new Vector3(0.05f, 0.1f, 1);
+                thrustLeft.transform.localScale = new Vector3(0.05f, 0.1f, 1);
+            }
         }
 	}
 }

@@ -8,6 +8,7 @@ public class ControlLander : MonoBehaviour {
     private Rigidbody2D rb;
     private Scene scene;
     private int currentSceneIndex;
+    private bool hasFuel = true;
 
     public float thrustPower;
     private int thrust = 0;
@@ -101,6 +102,15 @@ public class ControlLander : MonoBehaviour {
             
             // Subtract 1 whole fuel
             if(thrust == 1) fuelReserve -= 1;
+        }
+        else if(hasFuel == true)
+        {
+            // Destroy thrust objects!
+            GameObject tl = GameObject.Find("Thrust Left");
+            GameObject tr = GameObject.Find("Thrust Right");
+            Destroy(tl);
+            Destroy(tr);
+            hasFuel = false;
         }
     }
 }
