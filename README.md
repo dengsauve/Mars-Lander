@@ -17,7 +17,8 @@ However, Mars seems to be all the rage these days, so I figured why not make it 
 - [ ] 20 Levels Total
 - [ ] Fuel Boost Items
 - [ ] Animate Explosion
-- [ ] Pause Menu
+- [x] Pause Menu
+- [ ] Disable Sound Option
 - [ ] Smooth Transistions between levels
 
 ## Issues
