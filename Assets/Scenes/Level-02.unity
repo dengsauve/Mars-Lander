@@ -829,7 +829,7 @@ MonoBehaviour:
   thrustPower: 3
   rotateMod: 0.8
   maxLandSpeed: 2
-  fuelReserve: 1000
+  fuelReserves: 1000
 --- !u!114 &544078018
 MonoBehaviour:
   m_ObjectHideFlags: 0

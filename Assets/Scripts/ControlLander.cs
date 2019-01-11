@@ -19,9 +19,6 @@ public class ControlLander : MonoBehaviour {
 
     public int maxLandSpeed;
 
-    public int fuelReserve;
-
-	// Use this for initialization
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -90,7 +87,7 @@ public class ControlLander : MonoBehaviour {
     void ThrustLander()
     {
         // Apply Thrust Physics
-        if (fuelReserve > 0)
+        if (GameStats.FuelReserves > 0)
         {
             // Figure angle thrust
             float x = -1 * thrust * thrustPower * Mathf.Sin(transform.rotation.eulerAngles.z / 180.0f * Mathf.PI);
@@ -101,7 +98,7 @@ public class ControlLander : MonoBehaviour {
             rb.AddForce(movement);
             
             // Subtract 1 whole fuel
-            if(thrust == 1) fuelReserve -= 1;
+            if(thrust == 1) GameStats.FuelReserves -= 1;
         }
         else if(hasFuel == true)
         {

@@ -7,11 +7,6 @@ public class ThrustAnimation : MonoBehaviour {
     /* Attr for usage of flame.png Mandatory: Credit "Matheus de Carvalho Oliveira" or "Matheus Carvalho" */
     public GameObject thrustRight;
     public GameObject thrustLeft;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
 	// Update is called once per frame
 	void Update () {
