@@ -19,6 +19,9 @@ public class ControlLander : MonoBehaviour {
 
     public int maxLandSpeed;
 
+    public AudioSource boostSound;
+    private bool audioPlaying = false;
+
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,8 +32,24 @@ public class ControlLander : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// Get Input
-        if(Input.GetKey("w") || Input.GetKey("up") || Input.GetKey("space")) thrust = 1;
+        // Get Input
+        if (Input.GetKey("w") || Input.GetKey("up") || Input.GetKey("space"))
+        {
+            if(!audioPlaying)
+            {
+                audioPlaying = true;
+                boostSound.Play();
+            }
+            thrust = 1;
+        }
+        else
+        {
+            if (audioPlaying)
+            {
+                audioPlaying = false;
+                boostSound.Stop();
+            }
+        }
         if (Input.GetKey("d") || Input.GetKey("right")) rotate = -1;
         if (Input.GetKey("a") || Input.GetKey("left")) rotate = 1;
     }
