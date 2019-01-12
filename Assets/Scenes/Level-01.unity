@@ -229,7 +229,7 @@ MonoBehaviour:
   verticalSpeedLabel: Vertical Speed
   rotationLabel: Rotation
   fuelReserveLabel: Fuel Reserve
-  scoreLabel: 
+  scoreLabel: Score
   lander: {fileID: 544078012}
   pauseMenu: {fileID: 2034645924}
 --- !u!114 &44932273
