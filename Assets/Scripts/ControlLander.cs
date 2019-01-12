@@ -35,7 +35,7 @@ public class ControlLander : MonoBehaviour {
         // Get Input
         if (Input.GetKey("w") || Input.GetKey("up") || Input.GetKey("space"))
         {
-            if(!audioPlaying)
+            if(!audioPlaying && hasFuel)
             {
                 audioPlaying = true;
                 boostSound.Play();
@@ -127,6 +127,10 @@ public class ControlLander : MonoBehaviour {
             Destroy(tl);
             Destroy(tr);
             hasFuel = false;
+            if(boostSound.isPlaying)
+            {
+                boostSound.Stop();
+            }
         }
     }
 }
