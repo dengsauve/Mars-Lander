@@ -10,10 +10,12 @@ public class ManageHUD : MonoBehaviour {
     public Text verticalSpeedText;
     public Text rotationText;
     public Text fuelReserveText;
+    public Text scoreText;
     public string horizontalSpeedLabel;
     public string verticalSpeedLabel;
     public string rotationLabel;
     public string fuelReserveLabel;
+    public string scoreLabel;
 
     // Lander
     public GameObject lander;
@@ -39,10 +41,14 @@ public class ManageHUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        GetValues();
-        UpdateHUD();
         if (Input.GetKeyDown("escape") || Input.GetKeyDown("p")) TogglePauseMenu();
 	}
+
+    void FixedUpdate()
+    {
+        GetValues();
+        UpdateHUD();
+    }
 
     void GetValues()
     {
@@ -55,10 +61,10 @@ public class ManageHUD : MonoBehaviour {
     void UpdateHUD()
     {
         // Update HUD
-        horizontalSpeedText.text = horizontalSpeedLabel + horizontalSpeed.ToString() + " m/s";
-        verticalSpeedText.text = verticalSpeedLabel + verticalSpeed.ToString() + " m/s";
-        rotationText.text = rotationLabel + rotation.ToString() + " deg";
-        fuelReserveText.text = fuelReserveLabel + GameStats.FuelReserves.ToString() + " L";
+        horizontalSpeedText.text = horizontalSpeed.ToString() + " m/s : " + horizontalSpeedLabel;
+        verticalSpeedText.text = verticalSpeed.ToString() + " m/s : " + verticalSpeedLabel;
+        rotationText.text = rotation.ToString() + " deg : " + rotationLabel;
+        fuelReserveText.text = fuelReserveLabel + ": " + GameStats.FuelReserves.ToString() + " L";
     }
 
     void TogglePauseMenu()
