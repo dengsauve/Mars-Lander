@@ -11,6 +11,7 @@ public class ManageHUD : MonoBehaviour {
     public Text rotationText;
     public Text fuelReserveText;
     public Text scoreText;
+    public Text lowFuelText;
     public string horizontalSpeedLabel;
     public string verticalSpeedLabel;
     public string rotationLabel;
@@ -30,6 +31,9 @@ public class ManageHUD : MonoBehaviour {
     // Pause Menu
     public GameObject pauseMenu;
 
+    // Low Fuel Warning
+    public GameObject lowFuelWarning;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -48,6 +52,7 @@ public class ManageHUD : MonoBehaviour {
     {
         GetValues();
         UpdateHUD();
+        UpdateWarning();
     }
 
     void GetValues()
@@ -65,6 +70,22 @@ public class ManageHUD : MonoBehaviour {
         verticalSpeedText.text = verticalSpeed.ToString() + " m/s : " + verticalSpeedLabel;
         rotationText.text = rotation.ToString() + " deg : " + rotationLabel;
         fuelReserveText.text = fuelReserveLabel + ": " + GameStats.FuelReserves.ToString() + " L";
+    }
+
+    void UpdateWarning()
+    {
+        if (GameStats.FuelReserves < 200 && lowFuelWarning.activeSelf == false)
+        {
+            lowFuelWarning.SetActive(true);
+        }
+        else if(GameStats.FuelReserves < 200 && lowFuelWarning.activeSelf == true)
+        {
+            lowFuelText.text = GameStats.FuelReserves.ToString() + " L";
+        }
+        else if(lowFuelWarning.activeSelf == true && GameStats.FuelReserves >= 200)
+        {
+            lowFuelWarning.SetActive(false);
+        }
     }
 
     void TogglePauseMenu()
