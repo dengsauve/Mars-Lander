@@ -28,6 +28,7 @@ public class ControlLander : MonoBehaviour {
         scene = SceneManager.GetActiveScene();
         Debug.Log(scene.buildIndex.ToString() + " has loaded");
         currentSceneIndex = scene.buildIndex;
+        if (GameStats.FuelReserves == 0) GameStats.FuelReserves = 500;
 	}
 	
 	// Update is called once per frame
