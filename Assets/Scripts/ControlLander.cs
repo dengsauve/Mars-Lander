@@ -72,7 +72,12 @@ public class ControlLander : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("Lander collided with object. Y speed: " + lastSpeed);
-        if (Mathf.Abs(lastSpeed) > maxLandSpeed || Mathf.Abs(rb.rotation) > 5)
+        if (col.gameObject.tag == "Fuel")
+        {
+            GameStats.FuelReserves += 500;
+            Destroy(col.gameObject);
+        }
+        else if (Mathf.Abs(lastSpeed) > maxLandSpeed || Mathf.Abs(rb.rotation) > 5 || col.gameObject.tag == "Death")
         {
             //Destroy(gameObject);
             SceneManager.LoadScene(0);
@@ -90,11 +95,6 @@ public class ControlLander : MonoBehaviour {
             {
                 SceneManager.LoadScene(currentSceneIndex + 1);
             }
-        }
-        else if(col.gameObject.tag == "Fuel")
-        {
-            GameStats.FuelReserves += 500;
-            Destroy(col.gameObject);
         }
     }
 
