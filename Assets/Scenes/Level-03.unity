@@ -1749,7 +1749,7 @@ GameObject:
   - component: {fileID: 1564911205}
   m_Layer: 0
   m_Name: Refueling Box
-  m_TagString: Untagged
+  m_TagString: Fuel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

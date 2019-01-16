@@ -91,6 +91,11 @@ public class ControlLander : MonoBehaviour {
                 SceneManager.LoadScene(currentSceneIndex + 1);
             }
         }
+        else if(col.gameObject.tag == "Fuel")
+        {
+            GameStats.FuelReserves += 500;
+            Destroy(col.gameObject);
+        }
     }
 
     void RotateLander()
