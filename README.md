@@ -15,11 +15,13 @@ However, Mars seems to be all the rage these days, so I figured why not make it 
 ## Goals
 - [x] Retro Lander controls
 - [ ] 20 Levels Total
-- [ ] Fuel Boost Items
+- [ ] Custom Pixel Art to replace stock tilemaps
+- [x] Fuel Boost Items
 - [ ] Animate Explosion
 - [x] Pause Menu
 - [ ] Disable Sound Option
 - [ ] Smooth Transistions between levels
+- [ ] Calculate Scores
 
 ## Issues
 If you're playing my game, first of all, thanks for checking it out. 
