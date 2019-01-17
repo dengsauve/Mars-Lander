@@ -30,6 +30,7 @@ public class ManageHUD : MonoBehaviour {
 
     // Pause Menu
     public GameObject pauseMenu;
+    private Button restartButton;
 
     // Low Fuel Warning
     public GameObject lowFuelWarning;
@@ -40,6 +41,7 @@ public class ManageHUD : MonoBehaviour {
         // Assign RigidBody2D
         rb = lander.GetComponent<Rigidbody2D>();
         cl = lander.GetComponent<ControlLander>();
+        restartButton = pauseMenu.GetComponent<Button>();
 	}
 	
 	// Update is called once per frame
@@ -101,5 +103,12 @@ public class ManageHUD : MonoBehaviour {
             pauseMenu.SetActive(true);
             Time.timeScale = 0.0f;
         }
+    }
+
+    //Reloads the Level
+    public void Reload()
+    {
+        TogglePauseMenu();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

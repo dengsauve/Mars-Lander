@@ -9,6 +9,7 @@ public class ControlLander : MonoBehaviour {
     private Scene scene;
     private int currentSceneIndex;
     private bool hasFuel = true;
+    private int startingFuel;
 
     public float thrustPower;
     private int thrust = 0;
@@ -28,8 +29,19 @@ public class ControlLander : MonoBehaviour {
         scene = SceneManager.GetActiveScene();
         Debug.Log(scene.buildIndex.ToString() + " has loaded");
         currentSceneIndex = scene.buildIndex;
-        if (GameStats.FuelReserves == 0) GameStats.FuelReserves = 500;
-	}
+        if (GameStats.FuelReserves == 0)
+        {
+            if (GameStats.StartingFuel > 0)
+            {
+                GameStats.FuelReserves = GameStats.StartingFuel;
+            }
+            else
+            {
+                GameStats.FuelReserves = 500;
+            }
+        }
+        GameStats.StartingFuel = GameStats.FuelReserves;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -80,11 +92,13 @@ public class ControlLander : MonoBehaviour {
         else if (Mathf.Abs(lastSpeed) > maxLandSpeed || Mathf.Abs(rb.rotation) > 5 || col.gameObject.tag == "Death")
         {
             //Destroy(gameObject);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameStats.FuelReserves = startingFuel;
         }
         else if(col.gameObject.tag == "Obstacle")
         {
             SceneManager.LoadScene(scene.buildIndex);
+            GameStats.FuelReserves = startingFuel;
         }
         else if(col.gameObject.tag == "Finish")
         {

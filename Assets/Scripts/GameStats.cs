@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameStats {
 
     // Static holder for fuelReserves
-    private static int fuelReserves;
     public static int FuelReserves { get; set; }
+    public static int StartingFuel { get; set; }
 
 }
