@@ -8,5 +8,6 @@ public class GameInit : MonoBehaviour {
 
 	void Start () {
         GameStats.FuelReserves = fuelReserves;
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex == 0) Time.timeScale = 0.0f;
 	}
 }

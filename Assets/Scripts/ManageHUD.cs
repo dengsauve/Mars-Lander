@@ -28,6 +28,10 @@ public class ManageHUD : MonoBehaviour {
     private float horizontalSpeed;
     private float rotation;
 
+    // Start Menu
+    public GameObject startMenu;
+    private Button startButton;
+
     // Pause Menu
     public GameObject pauseMenu;
     private Button restartButton;
@@ -42,6 +46,7 @@ public class ManageHUD : MonoBehaviour {
         rb = lander.GetComponent<Rigidbody2D>();
         cl = lander.GetComponent<ControlLander>();
         restartButton = pauseMenu.GetComponent<Button>();
+        startButton = startMenu.GetComponent<Button>();
 	}
 	
 	// Update is called once per frame
@@ -110,5 +115,12 @@ public class ManageHUD : MonoBehaviour {
     {
         TogglePauseMenu();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    // Starts Game
+    public void StartGame()
+    {
+        Time.timeScale = 1.0f;
+        startMenu.SetActive(false);
     }
 }
