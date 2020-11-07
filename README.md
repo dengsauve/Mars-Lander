@@ -1,12 +1,9 @@
 # Mars-Lander
 Lunar Lander, but on Mars! Carefully land yourself on the launchpad, while preserving fuel. Don't land too fast or at too steep an angle, and you just might survive the harsh task of touching down on mars.
 
-## Nightly-ish Builds
-All builds are hosted here: http://138.197.236.11/games/MarsLander/
+## Final Build
 
-Builds are in alphabetical/numberical order. (e.g. alpha-03 is a newer build than alpha-02)
-
-No download required, I am building direct to WebGL
+http://dennissauve.com/storage/games/mars-lander/
 
 ## Overall Gist
 I would like to emulate a lot of the gameplay from one of my favorite childhood games, Lunar Lander.
@@ -14,7 +11,7 @@ However, Mars seems to be all the rage these days, so I figured why not make it 
 
 ## Goals
 - [x] Retro Lander controls
-- [ ] 20 Levels Total
+- [ ] 10 Levels Total
 - [ ] Custom Pixel Art to replace stock tilemaps
 - [x] Fuel Boost Items
 - [ ] Animate Explosion
